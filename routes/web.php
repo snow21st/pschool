@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['prefix'=>'backside','as'=> 'backside.'],function ()
+{
+	Route::resource('/timetable','TimetableController');
+
+
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
