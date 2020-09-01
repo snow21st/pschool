@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class Teachertableseeder extends Seeder
+class Classroomtableseeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class Teachertableseeder extends Seeder
      */
     public function run()
     {
-        Teacher::create(['user_id'=>'1']);
+        //
     }
 }
