@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Student;
+use App\Teacher;
+
 
 class Usertableseeder extends Seeder
 {
@@ -12,19 +16,40 @@ class Usertableseeder extends Seeder
      */
     public function run()
     {
-       $teacher= User::create([
-        	'name'=>'Daw Mya',
-        	'email'=>'dawmya@gmail.com',
+       $t1= User::create([
+        	'name'=>'Daw Sein',
+        	'email'=>'dawSein@gmail.com',
         	'password'=>Hash::make('dawmya')
     	]);
-       $teacher->assignRole('Teacher');
 
-    	$student= User::create([
-        	'name'=>'Aye Aye',
-        	'email'=>'ayeaye@gmail.com',
+       $teacher=Teacher::create([
+            'user_id'=>$t1->id,
+            'phone'=>'093123131',
+            'address'=>'thingangyun,yangon',
+            'age'=>'40'
+
+       ]);
+
+       $t1->assignRole('Teacher');
+
+    	$s1=User::create([
+        	'name'=>'Aye mg',
+        	'email'=>'ayemg@gmail.com',
         	'password'=>Hash::make('ayeaye')
     	]);
 
-    	$student->assignRole('Student');
+       
+
+        $student=Student::create([
+            'user_id'=>$s1->id,
+            'dob'=>'1998-03-23',
+            'nrc'=>'3/amz(n)999999',
+            'fathername'=>'U Hla Win',
+            'mothername'=>'Daw Aye Mg',
+            'address'=>'haling,yangon',
+            'phone'=>'09-87654332'
+        ]);
+
+    	$s1->assignRole('Student');
     }
 }
