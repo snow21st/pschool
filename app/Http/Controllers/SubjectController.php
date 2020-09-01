@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Academic;
+use App\Grade;
 use App\Subject;
-use App\Classroom;
-use App\Teacher;
-use App\Timetable;
 
-class TimetableController extends Controller
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,9 @@ class TimetableController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-
-        $timetables=Timetable::all();
-        return view('Backend.timetable.list',compact('timetables'));
+    {
+        $subjects=Subject::all();
+        return view('Backend.subject.list',compact('subjects'));
     }
 
     /**
@@ -29,14 +25,10 @@ class TimetableController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        $academics=Academic::all();
 
-        $subjects=Subject::all();
-        $classrooms=Classroom::all();
-        $teachers=Teacher::all();
-        return view('Backend.timetable.new',compact('academics','subjects','classrooms','teachers'));
-        
+     {
+        $grades=Grade::all();
+        return view('Backend.subject.new',compact('grades'));
     }
 
     /**
@@ -47,31 +39,31 @@ class TimetableController extends Controller
      */
     public function store(Request $request)
     {
-         $day=$request->day;
-         $start=$request->start;
-         $end=$request->end;
-         $academic=$request->academic;
-         $subject=$request->subject;
-         $teacher=$request->teacher;
-         $class=$request->class;
-           
-           
+         $validator=$request->validate([
+            'name'=>['required'],
         
+        
+        ]);
+
+        if($validator) {
+            $name=$request->name;
+            $grade=$request->grade;
+           
+           
 
 
-       $timetable= new Timetable; 
-       $timetable->academic_id=$academic; 
-       $timetable->subject_id=$subject; 
-       $timetable->classroom_id=$class; 
-       $timetable->teacher_id=$teacher; 
-       $timetable->day=$day; 
-       $timetable->starttime=$start; 
-       $timetable->endtime=$end; 
        
-       $timetable->save();
+       $subject= new Subject; 
+       $subject->name=$name; 
+       $subject->grade_id=$grade; 
+       
+       $subject->save();
 
-       return redirect()->route('backside.timetable.index')->with("successMsg","New timetable is Added to your data");
-
+       return redirect()->route('backside.subject.index')->with("successMsg","New Subject is Added to your data");
+   }
+   else{
+     return redirect::back()->withErrors($validator); 
+ }
     }
 
     /**

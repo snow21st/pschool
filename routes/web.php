@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix'=>'backside','as'=> 'backside.'],function ()
 {
 	Route::resource('/timetable','TimetableController');
+	Route::resource('/grade','GradeController');
+	Route::resource('/subject','SubjectController');
+	Route::resource('/student','StudentController');
 
 
 });

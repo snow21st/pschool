@@ -39,6 +39,9 @@
                                 			<option value="">Select</option>
                                 			<option>9:00</option>
                                 			<option>10:00</option>
+                                			<option>11:00</option>
+                                			<option>1:00</option>
+                                			<option>2:00</option>
 
                                 		</select>
                                 	</div>
@@ -50,6 +53,9 @@
                                 			<option value="">Select</option>
                                 			<option>10:00</option>
                                 			<option>11:00</option>
+                                			<option>12:00</option>
+                                			<option>2:00</option>
+                                			<option>3:00</option>
 
                                 		</select>
                                 	</div>
@@ -58,9 +64,10 @@
                                 		<div class="position-relative form-group"><label for="exampleCustomSelect" class="">Academic Year</label>
                                 			<select type="select" id="exampleCustomSelect" name="academic" class="custom-select">
                                 			<option value="">Select</option>
-                                			<option>2020</option>
-                                			<option>2019</option>
-
+                                			@foreach($academics as $academic)
+                                			<option value="{{$academic->id}}">{{$academic->year}}</option>
+                                			@endforeach
+`
                                 		</select>
                                 	</div>
                                 </div>
@@ -68,10 +75,12 @@
                                 <div class="col-md-6">
                                 		<div class="position-relative form-group"><label for="exampleCustomSelect" class="">Subject</label>
                                 			<select type="select" id="exampleCustomSelect" name="subject" class="custom-select">
+                                		
                                 			<option value="">Select</option>
-                                			<option>Myanmar</option>
-                                			<option>English</option>
-
+                                			@foreach($subjects as $subject)
+                                			<option value="{{$subject->id}}">{{$subject->name}}</option>
+                                			
+                                		@endforeach
                                 		</select>
                                 	</div>
                                 </div>
@@ -81,10 +90,12 @@
                                 <div class="col-md-6">
                                 		<div class="position-relative form-group"><label for="exampleCustomSelect" class="">Teacher</label>
                                 			<select type="select" id="exampleCustomSelect" name="teacher" class="custom-select">
+                                			
                                 			<option value="">Select</option>
-                                			<option>U Hla</option>
-                                			<option>Daw Mya</option>
-
+                                			@foreach($teachers as $teacher)
+                                			<option value="{{$teacher->id}}">{{$teacher->user->name}}</option>
+                                			
+                                			@endforeach
                                 		</select>
                                 	</div>
                                 </div>
@@ -93,10 +104,12 @@
                                 		<div class="position-relative form-group"><label for="exampleCustomSelect" class="">Class</label>
                                 			<select type="select" id="exampleCustomSelect" name="class" class="custom-select">
                                 			<option value="">Select</option>
-                                			<option>10 A</option>
-                                			<option>9 B</option>
-
+                                			@foreach($classrooms as $classroom)
+                                			<option value="{{$classroom->id}}">{{$classroom->name}}</option>
+                                			
+                                			@endforeach
                                 		</select>
+
                                 	</div>
                                 </div>
                                 </div>
