@@ -4,7 +4,9 @@
 			<div class="card-header">Academic Form
 				<div class="btn-actions-pane-right">
 					<div role="group" class="btn-group-sm btn-group">
-
+						<a href="{{route('backside.academic.index')}}" class="btn btn-primary">
+                   			 <i class="pe-7s-back pe-2x"></i>
+                		</a>
 					</div>
 				</div>
 			</div>
@@ -14,7 +16,7 @@
 						<div class="col-md-12">
 							<div class="main-card mb-3 card">
 								<div class="card-body">
-									<h5 class="card-title">Controls Types</h5>
+									<h5 class="card-title"></h5>
 									<form action="{{route('backside.academic.store')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
 						 <div class="input-group">

@@ -9,13 +9,10 @@
   
 </div>
 @endif
-    <div class="card-header">Active Users
+    <div class="card-header">Academic Year
 
         <div class="btn-actions-pane-right">
-            <div role="group" class="btn-group-sm btn-group">
-                <a href="" class="btn btn-primary">
-                    <i class="pe-7s-back pe-2x"></i>
-                </a>
+            <div role="group" class="btn-group-sm btn-group">               
                 <a href="{{route('backside.academic.create')}}" class="btn btn-success">
                     <i class="pe-7s-plus pe-2x"></i>
                 </a>
