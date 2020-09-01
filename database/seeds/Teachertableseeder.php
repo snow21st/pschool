@@ -11,6 +11,6 @@ class Teachertableseeder extends Seeder
      */
     public function run()
     {
-        //
+        Teacher::create(['name'=>'10th']);
     }
 }

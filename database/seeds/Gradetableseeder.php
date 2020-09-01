@@ -1,8 +1,12 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Grade;
+
 
 class Gradetableseeder extends Seeder
+
+
 {
     /**
      * Run the database seeds.
