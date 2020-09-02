@@ -17,4 +17,7 @@ class Academic extends Model
    	   public function timetable(){
     	return $this->hasMany('App\Timetable');
     }
+        public function records(){
+      return $this->hasMany('App\Record');
+    }
 }

@@ -19,6 +19,7 @@ Route::group(['prefix'=>'backside','as'=> 'backside.'],function ()
 	Route::resource('/grade','GradeController');
 	Route::resource('/subject','SubjectController');
 	Route::resource('/student','StudentController');
+	Route::resource('/record','RecordController');
 
 
 });
