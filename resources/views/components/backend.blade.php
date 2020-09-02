@@ -24,7 +24,7 @@
                 <!-- <div class="logo-src" >
                     <h1></h1>
                 </div> -->
-                <h4>star</h4>
+                <h5 style="color: green; font-style: italic;">Star Private School</h5>
                 <div class="header__pane ml-auto">
 
                     <div>
@@ -255,7 +255,7 @@
                                     </ul>
                                 </li>
 
-                                <li class="app-sidebar__heading">Payments</li>
+                                {{-- <li class="app-sidebar__heading">Payments</li>
                                 <li>
                                     <a href="#">
                                         <i class="metismenu-icon pe-7s-like2"></i>
@@ -273,19 +273,52 @@
                                         
                                     </ul>
                                 </li>
-                                
+                                 --}}
                                 <li class="app-sidebar__heading">Timetable</li>
                                 <li>
                                     <a href="#">
-                                        <i class="metismenu-icon pe-7s-bookmarks"></i>
+                                        <i class="metismenu-icon pe-7s-study"></i>
                                         Timetable Management
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
+                                    
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{route('backside.timetable.index')}}">
+                                                <i class="metismenu-icon">
+                                                </i>Timetable List
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('backside.timetable.create')}}">
                                                 <i class="metismenu-icon">
                                                 </i>New Timetable
+                                            </a>
+                                        </li>
+
+                                        
+                                    </ul>
+                                </li>
+
+                                <li class="app-sidebar__heading">Record</li>
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-graph2"></i>
+                                        Record Management
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                         <li>
+                                            <a href="{{route('backside.record.index')}}">
+                                                <i class="metismenu-icon">
+                                                </i>Record List
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{route('backside.record.create')}}">
+                                                <i class="metismenu-icon">
+                                                </i>New Record
                                             </a>
                                         </li>
 

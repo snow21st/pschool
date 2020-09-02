@@ -22,7 +22,7 @@ Route::group(['prefix'=>'backside','as'=> 'backside.'],function ()
 	Route::resource('/subject','SubjectController');
 	Route::resource('/student','StudentController');
 	Route::resource('/timetable','TimetableController');
-
+	Route::resource('/record','RecordController');
 });
 
 Route::get('/', function () {

@@ -18,4 +18,9 @@ class Classroom extends Model
     public function timetable(){
     	return $this->hasMany('App\Timetable');
     }
+
+
+       public function record(){
+    	return $this->hasMany('App\Record');
+    }
 }
