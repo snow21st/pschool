@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Teacher;
+use App\Student;
 use App\User;
 
-class TeacherController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,14 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers=Teacher::all();
-        $users=User::all();  
+        $students=Student::all();
+         $users=user::all();
 
-        return view('Backend.teacher.list',compact('teachers','users'));
+
+
+    
+     
+        return view('Backend.student.list',compact('students','users'));
     }
 
     /**
@@ -28,7 +32,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('Backend.teacher.new');
+        return view('Backend.student.new');
     }
 
     /**
@@ -39,47 +43,57 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-
-        $validator=$request->validate([
+            $validator=$request->validate([
             'email'=>['required','string','max:255','min:3','unique:users']
-
+           
         ]);
 
         if($validator) {
-           $name=$request->name;
-           $phone=$request->phone;
-           $email=$request->email;
-           $password=$request->password;
-           $address=$request->address;
-           $age=$request->age;
+         $name=$request->name;
+         $phone=$request->phone;
+         $email=$request->email;
+         $password=$request->password;
+         $address=$request->address;
+         $fathername=$request->fname;
+         $mothername=$request->mname;
+         $dob=$request->dob;
+          
+         $nrc=$request->gnrc;
+        
+        
+
+     
 
 
        // insert date_add()
-           $user= new User; 
-           $user->name=$name; 
-           $user->email=$email;
-           $user->password=$password;
-           $user->save();
-           $uid=$user->id;
+       $user= new User; 
+       $user->name=$name; 
+       $user->email=$email;
+       $user->password=$password;
+       $user->save();
+       $uid=$user->id;
 
-           $teacher=new Teacher;
-           $teacher->user_id=$uid;  
-           $teacher->address=$address; 
-           $teacher->phone=$phone;
-           $teacher->age=$age;  
+       $student=new Student;
+       $student->user_id=$uid;  
+       $student->dob=$dob;
+       $student->nrc=$nrc;
+       $student->fathername=$fathername; 
+       $student->mothername=$mothername; 
+       $student->address=$address; 
+       $student->phone=$phone; 
+        
+ 
+       $student->save();
+      
 
 
-           $teacher->save();
 
-
-
-
-           return redirect()->route('backside.teacher.index')->with("successMsg","New Teacher is Added to your data");
-       }
-       else{
-        return redirect::back()->withErrors($validator); 
+       return redirect()->route('backside.student.index')->with("successMsg","New Student is Added to your data");
+   }
+   else{
+    return redirect::back()->withErrors($validator); 
+   }
     }
-}
 
     /**
      * Display the specified resource.

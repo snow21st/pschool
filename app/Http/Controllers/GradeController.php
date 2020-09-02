@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Teacher;
-use App\User;
+use App\Grade;
 
-class TeacherController extends Controller
+class GradeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers=Teacher::all();
-        $users=User::all();  
-
-        return view('Backend.teacher.list',compact('teachers','users'));
+         $grades=Grade::all();
+        return view('Backend.grade.list',compact('grades'));
     }
 
     /**
@@ -28,7 +25,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('Backend.teacher.new');
+        return view('Backend.grade.new');
     }
 
     /**
@@ -39,47 +36,32 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-
-        $validator=$request->validate([
-            'email'=>['required','string','max:255','min:3','unique:users']
-
+         $validator=$request->validate([
+            'grade'=>['required'],
+        
+        
         ]);
 
         if($validator) {
-           $name=$request->name;
-           $phone=$request->phone;
-           $email=$request->email;
-           $password=$request->password;
-           $address=$request->address;
-           $age=$request->age;
+            $name=$request->grade;
+           
+           
+        
+ 
 
 
-       // insert date_add()
-           $user= new User; 
-           $user->name=$name; 
-           $user->email=$email;
-           $user->password=$password;
-           $user->save();
-           $uid=$user->id;
+       
+       $grade= new Grade; 
+       $grade->name=$name; 
+       
+       $grade->save();
 
-           $teacher=new Teacher;
-           $teacher->user_id=$uid;  
-           $teacher->address=$address; 
-           $teacher->phone=$phone;
-           $teacher->age=$age;  
-
-
-           $teacher->save();
-
-
-
-
-           return redirect()->route('backside.teacher.index')->with("successMsg","New Teacher is Added to your data");
-       }
-       else{
-        return redirect::back()->withErrors($validator); 
+       return redirect()->route('backside.grade.index')->with("successMsg","New Grade is Added to your data");
+   }
+   else{
+     return redirect::back()->withErrors($validator); 
+ }
     }
-}
 
     /**
      * Display the specified resource.

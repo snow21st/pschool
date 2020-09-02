@@ -14,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix'=>'backside','as'=> 'backside.'],function ()
-{
-	Route::resource('/timetable','TimetableController');
+{	
 	Route::resource('/academic','AcademicController');
 	Route::resource('/classroom','ClassroomController');
 	Route::resource('/teacher','TeacherController');
+	Route::resource('/grade','GradeController');
+	Route::resource('/subject','SubjectController');
+	Route::resource('/student','StudentController');
+	Route::resource('/timetable','TimetableController');
+
 });
 
 Route::get('/', function () {

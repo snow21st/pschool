@@ -10,7 +10,12 @@ class Classroom extends Model
       'name','grade_id'
     ];
 
+
     public function grade(){
     	return $this->belongsTo('App\Grade');
+    }
+
+    public function timetable(){
+    	return $this->hasMany('App\Timetable');
     }
 }

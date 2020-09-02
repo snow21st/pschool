@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Academic;
+use App\Subject;
+use App\Classroom;
+use App\Teacher;
+use App\Timetable;
 
 class TimetableController extends Controller
 {
@@ -15,7 +19,8 @@ class TimetableController extends Controller
     public function index()
     {   
 
-        return view('Backend.timetable.new');
+        $timetables=Timetable::all();
+        return view('Backend.timetable.list',compact('timetables'));
     }
 
     /**
@@ -25,6 +30,12 @@ class TimetableController extends Controller
      */
     public function create()
     {
+        $academics=Academic::all();
+
+        $subjects=Subject::all();
+        $classrooms=Classroom::all();
+        $teachers=Teacher::all();
+        return view('Backend.timetable.new',compact('academics','subjects','classrooms','teachers'));
         
     }
 
@@ -36,7 +47,31 @@ class TimetableController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $day=$request->day;
+         $start=$request->start;
+         $end=$request->end;
+         $academic=$request->academic;
+         $subject=$request->subject;
+         $teacher=$request->teacher;
+         $class=$request->class;
+           
+           
+        
+
+
+       $timetable= new Timetable; 
+       $timetable->academic_id=$academic; 
+       $timetable->subject_id=$subject; 
+       $timetable->classroom_id=$class; 
+       $timetable->teacher_id=$teacher; 
+       $timetable->day=$day; 
+       $timetable->starttime=$start; 
+       $timetable->endtime=$end; 
+       
+       $timetable->save();
+
+       return redirect()->route('backside.timetable.index')->with("successMsg","New timetable is Added to your data");
+
     }
 
     /**

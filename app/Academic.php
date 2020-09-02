@@ -14,4 +14,7 @@ class Academic extends Model
    			return $this->belongsToMany('App\Grades','academicsgrades','academic_id','grade_id')
    			->withTimestamps();
    		}
+   	   public function timetable(){
+    	return $this->hasMany('App\Timetable');
+    }
 }

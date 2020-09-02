@@ -132,7 +132,7 @@
                             <ul class="vertical-nav-menu">
                                 <li class="app-sidebar__heading">Academic Year </li>
                                 <li>
-                                    <a href="#" class="mm-active">
+                                    <a href="{{route('backside.academic.index')}}" class="mm-active">
                                         <i class="metismenu-icon pe-7s-date"></i>
                                         Academic Year Management
                                     </a>
@@ -146,13 +146,13 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{route('backside.classroom.index')}}">
                                                 <i class="metismenu-icon">
                                                 </i>Classroom List
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{route('backside.classroom.create')}}">
                                                 <i class="metismenu-icon">
                                                 </i>Add Classess
                                             </a>
@@ -168,13 +168,13 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{route('backside.grade.index')}}">
                                                 <i class="metismenu-icon">
                                                 </i>Standard List
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{route('backside.grade.create')}}">
                                                 <i class="metismenu-icon">
                                                 </i>Add Standard
                                             </a>
@@ -191,13 +191,13 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{route('backside.subject.index')}}">
                                                 <i class="metismenu-icon"></i>
                                                 Add New Subjects
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{route('backside.subject.create')}}">
                                                 <i class="metismenu-icon">
                                                 </i>Subject List
                                             </a>
@@ -216,13 +216,13 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{route('backside.teacher.index')}}">
                                                 <i class="metismenu-icon">
                                                 </i>Teachers List
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{route('backside.teacher.create')}}">
                                                 <i class="metismenu-icon">
                                                 </i>Add Teachers
                                             </a>
@@ -240,13 +240,13 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{route('backside.student.index')}}">
                                                 <i class="metismenu-icon">
                                                 </i>Students List
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{route('backside.student.create')}}">
                                                 <i class="metismenu-icon">
                                                 </i>Add Student
                                             </a>
