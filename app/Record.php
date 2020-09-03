@@ -18,7 +18,7 @@ class Record extends Model
     	return $this->belongsTo('App\Academic');
     }
 
-     public function classRoom(){
+     public function classroom(){
     	return $this->belongsTo('App\Classroom');
     }
 }

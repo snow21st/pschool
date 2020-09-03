@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Record;
+use App\Attendance;
 use App\Student;
-use App\Classroom;
 use App\Academic;
+use App\Classroom;
 
-class RecordController extends Controller
+class AttendanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class RecordController extends Controller
      */
     public function index()
     {
-        $classrooms=Classroom::all();
-        $records=Record::all();
-        return view('Backend.record.list',compact('records','classrooms'));
+        $students=Student::all();
+        $attendances=Attendance::all();
+        return view('Backend.attendance.list',compact('attendances','students'));
     }
 
     /**
@@ -29,10 +29,10 @@ class RecordController extends Controller
      */
     public function create()
     {
-        $students=Student::all();
-        $classrooms=Classroom::all();
         $academics=Academic::all();
-        return view('Backend.record.new',compact('students','classrooms','academics'));
+        $classrooms=Classroom::all();
+        $students=Student::all();
+        return view('Backend.attendance.new',compact('students','academics','classrooms'));
     }
 
     /**
@@ -43,33 +43,31 @@ class RecordController extends Controller
      */
     public function store(Request $request)
     {
-         $validator=$request->validate([
-            'student'=>['required']
+       $validator=$request->validate([
+        'student'=>['required'],
+        'date'=>['required'],
+        'status'=>['required'],        
         
-        
-        ]);
+    ]);
 
-        if($validator) {
-            $student=$request->student;
-            $academic=$request->academic;
-            $classroom=$request->class;           
-           
+       if($validator) {
+        $student=$request->student;
+        $date=$request->date;
+        $status=$request->status;      
 
+        $attendance= new attendance; 
+        $attendance->student_id=$student;
+        $attendance->date=$date;  
+        $attendance->status=$status; 
 
-       
-       $record= new Record; 
-       $record->student_id=$student; 
-       $record->academic_id=$academic; 
-       $record->class_id=$classroom; 
-       
-       $record->save();
+        $attendance->save();
 
-       return redirect()->route('backside.record.index')->with("successMsg","New record is Added to your data");
-   }
-   else{
-     return redirect::back()->withErrors($validator); 
- }
+        return redirect()->route('backside.attendance.index')->with("successMsg","New Attendance is Added to your data");
     }
+    else{
+       return redirect::back()->withErrors($validator); 
+   }
+}
 
     /**
      * Display the specified resource.

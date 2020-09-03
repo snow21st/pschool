@@ -35,7 +35,7 @@ class Usertableseeder extends Seeder
     	$s1=User::create([
         	'name'=>'Aye mg',
         	'email'=>'ayemg@gmail.com',
-        	'password'=>Hash::make('ayeaye')
+        	'password'=>Hash::make('ayemg')
     	]);
 
        

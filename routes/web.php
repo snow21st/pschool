@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix'=>'backside','as'=> 'backside.'],function ()
+Route::group(['middleware'=>['role:Staff','auth'],'prefix'=>'backside','as'=> 'backside.'],function ()
 {	
 	Route::resource('/academic','AcademicController');
 	Route::resource('/classroom','ClassroomController');
@@ -23,6 +23,12 @@ Route::group(['prefix'=>'backside','as'=> 'backside.'],function ()
 	Route::resource('/student','StudentController');
 	Route::resource('/timetable','TimetableController');
 	Route::resource('/record','RecordController');
+	Route::resource('/attendance','AttendanceController');
+});
+
+Route::group(['middleware'=>['role:Teacher|Staff','auth'],'prefix'=>'backside','as'=> 'backside.'],function ()
+{		
+	Route::resource('/attendance','AttendanceController');
 });
 
 Route::get('/', function () {

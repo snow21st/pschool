@@ -9,12 +9,12 @@
 
           </div>
           @endif
-          <div class="card-header">Active Users
+          <div class="card-header">Attendance List
 
             <div class="btn-actions-pane-right">
                 <div role="group" class="btn-group-sm btn-group">
 
-                    <a href="{{route('backside.record.create')}}" class="btn btn-success">
+                    <a href="{{route('backside.attendance.create')}}" class="btn btn-success">
                         <i class="pe-7s-plus pe-2x"></i>
                     </a>
                 </div>
@@ -24,40 +24,33 @@
             <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                 <thead>
                     <tr>
-                        <th class="text-center">#</th>                    
+                        <th class="text-center">#</th>                   
                         <th class="text-center">Student</th>
-                        <th class="text-center">Classroom</th>
-                        <th class="text-center">Academic Year</th>
-                        <th class="text-center">Actions</th>
+                        <th class="text-center">Date</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @php
                     $i=1;
                     @endphp
-                    @foreach($records as $record)
-                    @php
-                    $name=$record->student->user->name;
-                    $cid=$record->class_id;
-                    // $class=$record->class_id;
-
-                    $year=$record->academic->year;
-                    $id=$record->id;
-
+                    @foreach($attendances as $attendance)
+                    @php 
+                    $sid=$attendance->student->user->name;
                     @endphp
                     <tr>
-                        <td class="text-center text-muted">{{$i++}}</td>
-                        <td class="text-center">{{$name}}</td>
-                        @foreach($classrooms as $classroom)
+                        <td class="text-center text-muted">{{$i++}}</td>                        
+                        {{-- @foreach($students as $student)
                         @php
-                        $classid=$classroom->id;
+                        $studentid=$student->id;
                         @endphp
-                        @if($classid == $cid)
-                        <td class="text-center">{{$classroom->name}}</td>
-                        @endif
-                        @endforeach
-                        <td class="text-center">{{$year}}</td>
-
+                        @if($studentid == $sid) --}}
+                        <td class="text-center">{{$sid}}</td>
+                   {{--      @endif
+                        @endforeach --}}
+                        <td class="text-center">{{$attendance->date}}</td>
+                        <td class="text-center">{{$attendance->status}}</td>
                         <td class="text-center">
 
 
