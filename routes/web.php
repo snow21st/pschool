@@ -23,7 +23,10 @@ Route::group(['prefix'=>'backside','as'=> 'backside.'],function ()
 	Route::resource('/student','StudentController');
 	Route::resource('/timetable','TimetableController');
 	Route::resource('/record','RecordController');
+
 });
+
+Route::post('search','SearchController@store')->name('search');
 
 Route::get('/', function () {
     return view('welcome');

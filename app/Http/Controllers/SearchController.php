@@ -9,7 +9,7 @@ use App\Classroom;
 use App\Teacher;
 use App\Timetable;
 
-class TimetableController extends Controller
+class SearchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +17,9 @@ class TimetableController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-
-        $timetables=Timetable::all();
-        $classrooms=Classroom::all();
-        $academics=Academic::all();
-        return view('Backend.timetable.list',compact('timetables','academics','classrooms'));
+    {
+        
+      
     }
 
     /**
@@ -32,12 +29,7 @@ class TimetableController extends Controller
      */
     public function create()
     {
-        $academics=Academic::all();
-        $subjects=Subject::all();
-        $classrooms=Classroom::all();
-        $teachers=Teacher::all();
-        return view('Backend.timetable.new',compact('academics','subjects','classrooms','teachers'));
-        
+       
     }
 
     /**
@@ -48,31 +40,20 @@ class TimetableController extends Controller
      */
     public function store(Request $request)
     {
-         $day=$request->day;
-         $start=$request->start;
-         $end=$request->end;
-         $academic=$request->academic;
-         $subject=$request->subject;
-         $teacher=$request->teacher;
-         $class=$request->class;
-           
-           
-        
+         
+          $academic=$request->academic;
+         $classroom=$request->class;
+         $match=['academic_id'=>$academic,'classroom_id'=>$classroom];
 
-
-       $timetable= new Timetable; 
-       $timetable->academic_id=$academic; 
-       $timetable->subject_id=$subject; 
-       $timetable->classroom_id=$class; 
-       $timetable->teacher_id=$teacher; 
-       $timetable->day=$day; 
-       $timetable->starttime=$start; 
-       $timetable->endtime=$end; 
-       
-       $timetable->save();
-
-       return redirect()->route('backside.timetable.index')->with("successMsg","New timetable is Added to your data");
-
+        $timetables=Timetable::where($match)->get();
+        if(empty($timetables))
+        {
+        return redirect()->route('backside.timetable.index')->with("successMsg","no data for your search");
+        }
+        else{
+              
+              return view('Backend.timetable.search',compact('timetables'));
+        }
     }
 
     /**
@@ -83,11 +64,8 @@ class TimetableController extends Controller
      */
     public function show($id)
     {
-        
-
+        //
     }
-
-
 
     /**
      * Show the form for editing the specified resource.
