@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Project Template</title>
+    <title>Star Private School</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
@@ -258,25 +258,7 @@
                                     </ul>
                                 </li>
 
-                                {{-- <li class="app-sidebar__heading">Payments</li>
-                                <li>
-                                    <a href="#">
-                                        <i class="metismenu-icon pe-7s-like2"></i>
-                                        Payments Management
-                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                    </a>
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon">
-                                                </i>Payments
-                                            </a>
-                                        </li>
-
-                                        
-                                    </ul>
-                                </li>
-                                 --}}
+                                
                                 <li class="app-sidebar__heading">Timetable</li>
                                 <li>
                                     <a href="#">
@@ -311,7 +293,7 @@
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul>
-                                         <li>
+                                        <li>
                                             <a href="{{route('backside.record.index')}}">
                                                 <i class="metismenu-icon">
                                                 </i>Record List
@@ -337,10 +319,16 @@
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul>
-                                        <li>
-                                            <a href="#">
+                                         <li>
+                                            <a href="{{route('backside.attendance.index')}}">
                                                 <i class="metismenu-icon">
                                                 </i>Attendance List
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('backside.attendance.create')}}">
+                                                <i class="metismenu-icon">
+                                                </i>Add Attendance
                                             </a>
                                         </li>
 

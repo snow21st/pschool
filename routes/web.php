@@ -29,7 +29,12 @@ Route::group(['middleware'=>['role:Staff','auth'],'prefix'=>'backside','as'=> 'b
 Route::group(['middleware'=>['role:Teacher|Staff','auth'],'prefix'=>'backside','as'=> 'backside.'],function ()
 {		
 	Route::resource('/attendance','AttendanceController');
+
 });
+
+Route::post('search','SearchController@store')->name('search');
+Route::post('searchbyattendance','SearchAttendanceController@store')->name('searchattendance');
+Route::post('searchbyrecord','SearchRecordController@store')->name('searchrecord');
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,6 +44,3 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

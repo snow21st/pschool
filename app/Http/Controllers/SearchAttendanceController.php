@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Attendance;
-use App\Student;
-use App\Classroom;
 use App\Academic;
+use App\Classroom;
+use App\Attendance;
 
-class AttendanceController extends Controller
+class SearchAttendanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +16,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        $attendances=Attendance::all();
-        $academics=Academic::all();
-        $classrooms=Classroom::all();
-        return view('Backend.attendance.list',compact('attendances','academics','classrooms'));
+        //
     }
 
     /**
@@ -30,10 +26,7 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        $academics=Academic::all();
-        $students=Student::all();
-        $classrooms=Classroom::all();
-        return view('Backend.attendance.new',compact('academics','students','classrooms'));
+        //
     }
 
     /**
@@ -44,37 +37,20 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-       $validator=$request->validate([
-        'academic'=>['required'],
-        'classroom'=>['required'],
-        'student'=>['required'],
-        'date'=>['required'],
-        'status'=>['required'],        
-        
-    ]);
-
-       if($validator) {
         $academic=$request->academic;
-        $classroom=$request->classroom;
-        $student=$request->student;
-        $date=$request->date;
-        $status=$request->status;      
+        $classroom=$request->class;
+        $match=['academic_id'=>$academic,'classroom_id'=>$classroom];
 
-        $attendance= new attendance; 
-        $attendance->academic_id=$academic;
-        $attendance->classroom_id=$classroom;
-        $attendance->student_id=$student;
-        $attendance->date=$date;  
-        $attendance->status=$status; 
-
-        $attendance->save();
-
-        return redirect()->route('backside.attendance.index')->with("successMsg","New Attendance is Added to your data");
+        $attendances=Attendance::where($match)->get();
+        if(empty($attendances))
+        {
+        return redirect()->route('backside.attendance.index')->with("successMsg","no data for your search");
+        }
+        else{
+              
+              return view('Backend.attendance.search',compact('attendances'));
+        }
     }
-    else{
-       return redirect::back()->withErrors($validator); 
-   }
-}
 
     /**
      * Display the specified resource.

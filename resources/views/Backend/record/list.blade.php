@@ -28,6 +28,7 @@
                         <th class="text-center">Student</th>
                         <th class="text-center">Classroom</th>
                         <th class="text-center">Academic Year</th>
+                        <th class="text-center">Status</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -42,6 +43,7 @@
                     // $class=$record->class_id;
 
                     $year=$record->academic->year;
+                    $status=$record->status;
                     $id=$record->id;
 
                     @endphp
@@ -57,7 +59,7 @@
                         @endif
                         @endforeach
                         <td class="text-center">{{$year}}</td>
-
+                        <td class="text-center">{{$status}}</td>
                         <td class="text-center">
 
 
@@ -77,6 +79,39 @@
         </div>
 
     </div>
+
+     <h5 class="card-title">Search Form</h5>
+    <form action="{{route('searchattendance')}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="row">
+            <div class="col-md-6">
+                <div class="position-relative form-group"><label for="academic" class="">Academic</label>
+                    <select type="select" id="academic" name="academic" class="custom-select">
+                        <option> Choose Academic </option>
+                        @foreach($academics as $academic)
+                        <option value="{{ $academic->id }}"> {{ $academic->year }} </option>
+                        @endforeach
+
+                    </select>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="position-relative form-group"><label for="grade" class="">Class</label>
+                    <select type="select" id="grade" name="class" class="custom-select">
+                        <option> Choose Class </option>
+                        @foreach($classrooms as $classroom)
+                        <option value="{{ $classroom->id }}"> {{ $classroom->name }} </option>
+                        @endforeach
+
+                    </select>
+                </div>
+            </div>
+            
+            <br>
+        </div>
+        <button type="submit" class="mt-1 btn btn-primary">Search</button>
+    </form>
 </div>
 </div>
 </x-backend>

@@ -17,9 +17,10 @@ class RecordController extends Controller
      */
     public function index()
     {
+        $academics=Academic::all();
         $classrooms=Classroom::all();
         $records=Record::all();
-        return view('Backend.record.list',compact('records','classrooms'));
+        return view('Backend.record.list',compact('records','classrooms','academics'));
     }
 
     /**
@@ -52,7 +53,8 @@ class RecordController extends Controller
         if($validator) {
             $student=$request->student;
             $academic=$request->academic;
-            $classroom=$request->class;           
+            $classroom=$request->class;
+            $status=$request->status;           
            
 
 
@@ -60,7 +62,8 @@ class RecordController extends Controller
        $record= new Record; 
        $record->student_id=$student; 
        $record->academic_id=$academic; 
-       $record->class_id=$classroom; 
+       $record->class_id=$classroom;
+       $record->status=$status; 
        
        $record->save();
 

@@ -20,7 +20,9 @@ class TimetableController extends Controller
     {   
 
         $timetables=Timetable::all();
-        return view('Backend.timetable.list',compact('timetables'));
+        $classrooms=Classroom::all();
+        $academics=Academic::all();
+        return view('Backend.timetable.list',compact('timetables','academics','classrooms'));
     }
 
     /**
@@ -31,7 +33,6 @@ class TimetableController extends Controller
     public function create()
     {
         $academics=Academic::all();
-
         $subjects=Subject::all();
         $classrooms=Classroom::all();
         $teachers=Teacher::all();
@@ -82,8 +83,11 @@ class TimetableController extends Controller
      */
     public function show($id)
     {
-        //
+        
+
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

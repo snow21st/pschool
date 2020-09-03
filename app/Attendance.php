@@ -13,4 +13,12 @@ class Attendance extends Model
      public function student(){
     	return $this->belongsTo('App\Student');
     }
+
+    public function academic(){
+    	return $this->belongsTo('App\Academic');
+    }
+
+    public function classroom(){
+    	return $this->belongsTo('App\Classroom');
+    }
 }

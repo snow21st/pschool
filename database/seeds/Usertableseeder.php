@@ -18,8 +18,8 @@ class Usertableseeder extends Seeder
     {
        $t1= User::create([
         	'name'=>'Daw Sein',
-        	'email'=>'dawSein@gmail.com',
-        	'password'=>Hash::make('dawmya')
+        	'email'=>'dawsein@gmail.com',
+        	'password'=>Hash::make('dawsein')
     	]);
 
        $teacher=Teacher::create([
